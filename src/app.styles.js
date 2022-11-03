@@ -10,7 +10,7 @@ const gradientMovement = keyframes`
     100% {
         background-position: 100% 0;
     }
-`
+`;
 
 //main styles
 
@@ -30,15 +30,53 @@ export const ColoredBackground = styled.div`
 `;
 
 export const CardDiv = styled.section`
-    margin-top: 150px;
-    margin-left: -100px;
+    margin-top: 10%;
+    margin-left: -25vh;
     width: 600px;
-    height: 600px;
+    height: 700px;
 `;
 
-export const Card = styled.div`
-    background: linear-gradient(163.95deg, #6348FE 4.74%, #610595 88.83%);
+export const CardFront = styled.div`
+    background-image: linear-gradient(90deg, #6348FE, #610595, #6348FE, #610595);
     border-radius: 10px;
-    width: 400px;
-    height: 250px;
+    width: 500px;
+    height: 300px;
+    animation: ${gradientMovement} 3s linear infinite;
+    background-size: 300% 100%;
 `;
+
+export const CardBack = styled.div`
+    background: #D2D3D9;
+    width: 500px;
+    height: 300px;
+    margin-top: 100px;
+    border-radius: 10px;
+    float: right;
+    
+`;
+
+export const CardSwipe = styled.div`
+    background: #2F2F2F;
+    margin-top: 30px;
+    width: 100%;
+    height: 50px;
+`;
+
+export const CvcSection = styled.div`
+    height: 50px;
+    width: 75%;
+    background: grey;
+    border-radius: 4px;
+    text-align: right;
+    margin: 25px auto;
+
+    span{
+        font-family: 'Arial', sans-serif;
+        font-style: normal;
+        font-size: 40px;
+        color: #FFFFFF;
+        margin-right: 10px;
+        letter-spacing: 2px;
+    }
+`;
+

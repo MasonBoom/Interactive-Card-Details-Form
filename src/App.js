@@ -3,7 +3,10 @@ import {
   AppContainer,
   ColoredBackground,
   CardDiv,
-  Card,
+  CardFront,
+  CardBack,
+  CardSwipe,
+  CvcSection,
 } from './app.styles'
 
 function App() {
@@ -13,8 +16,15 @@ function App() {
         <div></div>
       </ColoredBackground>
       <CardDiv>
-        <Card>
-        </Card>
+        <CardFront>
+
+        </CardFront>
+        <CardBack>
+          <CardSwipe />
+          <CvcSection>
+            <span>000</span>
+          </CvcSection>
+        </CardBack>
       </CardDiv>
     </AppContainer>
   );
