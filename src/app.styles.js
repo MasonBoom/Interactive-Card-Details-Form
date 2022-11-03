@@ -37,7 +37,7 @@ export const CardDiv = styled.section`
 `;
 
 export const CardFront = styled.div`
-    background-image: linear-gradient(90deg, #6348FE, #610595, #6348FE, #610595);
+    background-image: linear-gradient(90deg, #47A2FF, #610595, #47A2FF, #610595);
     border-radius: 10px;
     width: 500px;
     height: 300px;
