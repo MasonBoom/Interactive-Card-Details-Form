@@ -67,16 +67,17 @@ export const CvcSection = styled.div`
     width: 75%;
     background: grey;
     border-radius: 4px;
-    text-align: right;
     margin: 25px auto;
 
     span{
         font-family: 'Arial', sans-serif;
         font-style: normal;
-        font-size: 40px;
+        font-size: 30px;
         color: #FFFFFF;
         margin-right: 10px;
         letter-spacing: 2px;
+        float: right;
+        margin-top: 8px;
     }
 `;
 
