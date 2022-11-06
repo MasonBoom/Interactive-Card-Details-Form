@@ -64,6 +64,30 @@ export const WhiteCircle = styled.div`
     }
 `;
 
+export const CardNumber = styled.span`
+    letter-spacing: 5px;
+    color: #FFFFFF;
+    font-size: 38px;
+    font-family: 'Arial', sans-serif;
+    margin-top: 70px;
+    align-text: center;
+    margin-left: auto;
+    margin-right: auto;
+`;
+
+export const CardName = styled.div`
+    letter-spacing: 2px;
+    margin-top: 60px;
+    font-size: 20px;
+    font-family: 'Arial', sans-serif;
+    color: #FFFFFF;
+    margin-left: 35px;
+
+    span {
+        margin-left: 240px;
+    }
+`;
+
 export const CardBack = styled.div`
     background: #D2D3D9;
     width: 500px;

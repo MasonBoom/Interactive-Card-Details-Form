@@ -9,10 +9,13 @@ import {
   CvcSection,
   CardBackImg,
   WhiteCircle,
+  CardNumber,
+  CardName,
 } from './app.styles';
 import cardBackImg from './assets/cardBack.svg';
 
 function App() {
+
   return (
     <AppContainer>
       <ColoredBackground>
@@ -23,6 +26,10 @@ function App() {
           <WhiteCircle>
             <WhiteCircle className="transparentcircle"></WhiteCircle>
           </WhiteCircle>
+          <CardNumber>0000 0000 0000</CardNumber>
+          <CardName>Card Holder
+            <span>00/00</span>
+          </CardName>
         </CardFront>
         <CardBack>
           <CardSwipe />
