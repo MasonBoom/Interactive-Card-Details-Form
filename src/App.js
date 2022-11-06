@@ -7,7 +7,10 @@ import {
   CardBack,
   CardSwipe,
   CvcSection,
-} from './app.styles'
+  CardBackImg,
+  WhiteCircle,
+} from './app.styles';
+import cardBackImg from './assets/cardBack.svg';
 
 function App() {
   return (
@@ -17,13 +20,16 @@ function App() {
       </ColoredBackground>
       <CardDiv>
         <CardFront>
-
+          <WhiteCircle>
+            <WhiteCircle className="transparentcircle"></WhiteCircle>
+          </WhiteCircle>
         </CardFront>
         <CardBack>
           <CardSwipe />
           <CvcSection>
             <span>000</span>
           </CvcSection>
+          <CardBackImg src={cardBackImg} alt="Back of card image writing" />
         </CardBack>
       </CardDiv>
     </AppContainer>

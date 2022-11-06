@@ -30,19 +30,38 @@ export const ColoredBackground = styled.div`
 `;
 
 export const CardDiv = styled.section`
-    margin-top: 10%;
-    margin-left: -25vh;
+    margin: auto -25vh;
     width: 600px;
     height: 700px;
 `;
 
 export const CardFront = styled.div`
-    background-image: linear-gradient(90deg, #47A2FF, #610595, #47A2FF, #610595);
+    background: linear-gradient(90deg, #47A2FF, #610595, #47A2FF, #610595);
     border-radius: 10px;
     width: 500px;
-    height: 300px;
-    animation: ${gradientMovement} 3s linear infinite;
+    height: 275px;
+    animation: ${gradientMovement} 2s linear infinite;
     background-size: 300% 100%;
+    padding-top: 25px;
+    display: flex;
+    flex-direction: column;
+`;
+
+export const WhiteCircle = styled.div`
+    background: white;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    margin-left: 25px;
+
+    &.transparentcircle {
+        background: transparent;
+        border: 1px solid white;
+        width: 25px;
+        height: 25px;
+        margin-left: 65px;
+        margin-top: 12px;
+    }
 `;
 
 export const CardBack = styled.div`
@@ -52,7 +71,7 @@ export const CardBack = styled.div`
     margin-top: 100px;
     border-radius: 10px;
     float: right;
-    
+
 `;
 
 export const CardSwipe = styled.div`
@@ -81,3 +100,8 @@ export const CvcSection = styled.div`
     }
 `;
 
+export const CardBackImg = styled.img`
+    width: 50%;
+    display: block;
+    margin: 40px auto;
+`;
