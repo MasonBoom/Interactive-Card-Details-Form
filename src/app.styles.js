@@ -221,4 +221,3 @@ export const ConfirmButton = styled.button`
         box-shadow: 5px 10px 8px #888888;
     }
 `;
-// reccomend blur box shadow?
