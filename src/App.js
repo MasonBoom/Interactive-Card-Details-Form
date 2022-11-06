@@ -30,6 +30,36 @@ import checkmark from './assets/checkmark.svg';
 
 function App() {
   const [page, setPage] = useState('main')
+  const [name, setName] = useState('')
+  const [cardNumber, setCardNumber] = useState('')
+  const [expMonth, setExpMonth] = useState('')
+  const [expYear, setExpYear] = useState('')
+  const [cvc, setCvc] = useState('')
+
+  const handleNameChange = (e) => {
+    setName(e.target.value)
+  }
+
+  const cardNumberFormat = (number) => {
+    return number.replace(/(\d{4})/g, '$1 ').trim()
+  }
+
+  const validateAndSubmit = () => {
+    if (name === '' || cardNumber.length < 16 || expMonth.length < 2 || expYear.length < 2 || cvc.length < 3) {
+      alert('Please fill out all fields')
+    } else {
+      setPage('confirmPage')
+    }
+  }
+
+  const resetAllFields = () => {
+    setName('')
+    setCardNumber('')
+    setExpMonth('')
+    setExpYear('')
+    setCvc('')
+    setPage('main')
+  }
 
   const Confirmation = () => {
 
@@ -43,7 +73,7 @@ function App() {
           <SubHeader>We've added your card details</SubHeader>
           <ConfirmButton 
             className={page} 
-            onClick={() => setPage('main')}
+            onClick={() => resetAllFields()}
           >
             Continue
           </ConfirmButton>
@@ -51,72 +81,6 @@ function App() {
       </UserContainer>
     )
   }
-
-  const UserForm = () => {
-
-    return (
-      <UserContainer>
-        <Label>Cardholder Name</Label>
-        <InputField 
-          placeholder="e.g. John Doe" 
-          type="text"
-          required
-        />
-        <Label>Card Number</Label>
-        <InputField 
-          type="tel" 
-          inputmode="numeric" 
-          pattern="[0-9\s]{16}" 
-          autocomplete="cc-number" 
-          maxlength="16" 
-          placeholder="xxxx xxxx xxxx xxxx"
-          required
-        >
-        </InputField>
-        <FinalInputRow>
-          <ExpDate>
-            <Label>Exp. Date</Label>
-            <DateInputs>
-              <InputField
-                className="mm"
-                type="tel"
-                inputmode="numeric"
-                pattern="[0-9\s]{2}"
-                autocomplete="cc-exp"
-                maxlength="2"
-                required
-              />
-              <InputField
-                className="yy"
-                type="tel"
-                inputmode="numeric"
-                pattern="[0-9\s]{2}"
-                autocomplete="cc-exp"
-                maxlength="2"
-                required
-              />
-            </DateInputs>
-          </ExpDate>
-          <CVC>
-            <Label>CVC</Label>
-            <InputField
-              className="cvc"
-              type="tel"
-              inputmode="numeric"
-              pattern="[0-9\s]{3}"
-              maxlength="3"
-              placeholder="xxx"
-              required
-            />
-          </CVC>
-        </FinalInputRow>
-        <ConfirmButton onClick={() => setPage('confirmPage')}>Confirm</ConfirmButton>
-      </UserContainer>
-    )
-  }
-
-
-
 
   return (
     <Main>
@@ -126,20 +90,98 @@ function App() {
           <WhiteCircle>
             <WhiteCircle className="transparentcircle"></WhiteCircle>
           </WhiteCircle>
-          <CardNumber>0000 0000 0000 0000</CardNumber>
-          <CardName>Card Holder
-            <span>00/00</span>
+          <CardNumber>{cardNumber.length < 16 ? '0000 0000 0000 0000' : cardNumberFormat(cardNumber)}</CardNumber>
+          <CardName>{name === '' ? 'Card Holder' : name}
+            <span>{expMonth === '' ? '00' : expMonth}/{expYear.length < 2 ? '00' : expYear}</span>
           </CardName>
         </CardFront>
         <CardBack>
           <CardSwipe />
           <CvcSection>
-            <span>000</span>
+            <span>{cvc.length < 3 ? '000' : cvc}</span>
           </CvcSection>
           <CardBackImg src={cardBackImg} alt="Back of card image writing" />
         </CardBack>
       </CardDiv>
-        {page === 'main' ? <UserForm /> : <Confirmation />}
+        {page === 'main' ?
+          <UserContainer>
+            <Label>Cardholder Name</Label>
+            <InputField 
+              placeholder="e.g. John Doe" 
+              type="text"
+              value={name}
+              onChange={handleNameChange}
+              required
+            />
+            <Label>Card Number</Label>
+            <InputField 
+              type="tel" 
+              inputmode="numeric" 
+              pattern="[0-9]*" 
+              autocomplete="cc-number" 
+              maxLength="16" 
+              placeholder="xxxx xxxx xxxx xxxx"
+              value={cardNumber}
+              onChange={(e) =>
+                setCardNumber((v) => (e.target.validity.valid ? e.target.value : v))
+              }
+              required
+            >
+            </InputField>
+            <FinalInputRow>
+              <ExpDate>
+                <Label>Exp. Date</Label>
+                <DateInputs>
+                  <InputField
+                    className="mm"
+                    type="text"
+                    pattern="[0-9]*"
+                    autocomplete="cc-exp"
+                    maxLength="2"
+                    placeholder="MM"
+                    value={expMonth}
+                    onChange={(e) =>
+                      setExpMonth((v) => (e.target.validity.valid ? e.target.value : v))
+                    }
+                    required
+                  />
+                  <InputField
+                    className="yy"
+                    type="text"
+                    inputmode="numeric"
+                    pattern="[0-9]*"
+                    autocomplete="cc-exp"
+                    maxLength="2"
+                    placeholder="YY"
+                    value={expYear}
+                    onChange={(e) =>
+                      setExpYear((v) => (e.target.validity.valid ? e.target.value : v))
+                    }
+                    required
+                  />
+                </DateInputs>
+              </ExpDate>
+              <CVC>
+                <Label>CVC</Label>
+                <InputField
+                  className="cvc"
+                  type="text"
+                  inputmode="numeric"
+                  pattern="[0-9]*"
+                  maxLength="3"
+                  placeholder="xxx"
+                  onChange={(e) =>
+                    setCvc((v) => (e.target.validity.valid ? e.target.value : v))
+                  }
+                  required
+                />
+              </CVC>
+            </FinalInputRow>
+            <ConfirmButton onClick={() => validateAndSubmit()}>Confirm</ConfirmButton>
+          </UserContainer>
+        : 
+          <Confirmation />
+        }
     </Main>
   );
 }

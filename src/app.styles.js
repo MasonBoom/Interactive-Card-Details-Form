@@ -49,7 +49,7 @@ export const CardFront = styled.div`
     border-radius: 10px;
     width: 500px;
     height: 275px;
-    animation: ${gradientMovement} 2s linear infinite;
+    animation: ${gradientMovement} 3s linear infinite;
     background-size: 300% 100%;
     padding-top: 25px;
     display: flex;
@@ -93,7 +93,9 @@ export const CardName = styled.div`
     margin-left: 30px;
 
     span {
-        margin-left: 245px;
+        float: right;
+        margin-left: auto;
+        margin-right: 35px;
     }
 `;
 
@@ -139,7 +141,7 @@ export const CardBackImg = styled.img`
     margin: 40px auto;
 `;
 
-export const UserContainer = styled.div`
+export const UserContainer = styled.form`
     display: flex;
     flex-direction: column;
     height: 500px;
