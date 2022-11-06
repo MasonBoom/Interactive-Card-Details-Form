@@ -1,7 +1,7 @@
 import styled, { keyframes } from "styled-components"
 import mainBackgroundColor from "./assets/mainBackgroundColor.png"
 
-//animation
+// animations
 
 const gradientMovement = keyframes`
     0% {
@@ -12,9 +12,18 @@ const gradientMovement = keyframes`
     }
 `;
 
-//main styles
+const gradientMovementCheckmark = keyframes`
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 0 100%;
+    }
+`;
 
-export const AppContainer = styled.div`
+// main styles
+
+export const Main = styled.div`
     display: flex;
     flex-direction: row;
 `;
@@ -130,7 +139,7 @@ export const CardBackImg = styled.img`
     margin: 40px auto;
 `;
 
-export const UserInputs = styled.div`
+export const UserContainer = styled.div`
     display: flex;
     flex-direction: column;
     height: 500px;
@@ -220,4 +229,52 @@ export const ConfirmButton = styled.button`
         border: none;
         box-shadow: 5px 10px 8px #888888;
     }
+
+    &.confirmPage {
+        margin-top: 11vh;
+    }
 `;
+
+export const MainConfirmation = styled.div`
+    display: flex;
+    flex-direction: column;
+`;
+
+export const CheckmarkContainer = styled.div`
+    background: linear-gradient(0deg, #6348FE, #610595, #6348FE, #610595);
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    animation: ${gradientMovementCheckmark} 1s linear infinite;
+    background-size: 100% 300%;
+    margin: auto;
+    text-align: center;
+`; 
+
+export const CheckmarkImg = styled.img`
+    width: 50px;
+    height: 50px;
+    margin: 25px auto;
+`;
+
+export const Header = styled.h2`
+    color: #21092F;
+    font-weight: 500;
+    font-size: 32px;
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    letter-spacing: 3.5px;
+    text-transform: uppercase;
+    margin-top: 50px;
+`;
+
+export const SubHeader = styled.h3`
+    font-weight: 500;
+    font-size: 32px;
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    font-size: 24px;
+    color: #8F8694;
+    margin-top: 10px;
+`;
+

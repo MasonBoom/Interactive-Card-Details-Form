@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import {
-  AppContainer,
+  Main,
   ColoredBackground,
   CardDiv,
   CardFront,
@@ -11,7 +11,7 @@ import {
   WhiteCircle,
   CardNumber,
   CardName,
-  UserInputs,
+  UserContainer,
   Label,
   InputField,
   FinalInputRow,
@@ -19,35 +19,43 @@ import {
   DateInputs,
   CVC,
   ConfirmButton,
+  MainConfirmation,
+  CheckmarkContainer,
+  CheckmarkImg,
+  Header,
+  SubHeader,
 } from './app.styles';
 import cardBackImg from './assets/cardBack.svg';
+import checkmark from './assets/checkmark.svg';
 
 function App() {
+  const [page, setPage] = useState('main')
 
-  return (
-    <AppContainer>
-      <ColoredBackground>
-        <div></div>
-      </ColoredBackground>
-      <CardDiv>
-        <CardFront>
-          <WhiteCircle>
-            <WhiteCircle className="transparentcircle"></WhiteCircle>
-          </WhiteCircle>
-          <CardNumber>0000 0000 0000 0000</CardNumber>
-          <CardName>Card Holder
-            <span>00/00</span>
-          </CardName>
-        </CardFront>
-        <CardBack>
-          <CardSwipe />
-          <CvcSection>
-            <span>000</span>
-          </CvcSection>
-          <CardBackImg src={cardBackImg} alt="Back of card image writing" />
-        </CardBack>
-      </CardDiv>
-      <UserInputs>
+  const Confirmation = () => {
+
+    return (
+      <UserContainer>
+        <MainConfirmation>
+          <CheckmarkContainer>
+              <CheckmarkImg src={checkmark} alt="checkmark" />
+          </CheckmarkContainer>
+          <Header>Thank you!</Header>
+          <SubHeader>We've added your card details</SubHeader>
+          <ConfirmButton 
+            className={page} 
+            onClick={() => setPage('main')}
+          >
+            Continue
+          </ConfirmButton>
+        </MainConfirmation>
+      </UserContainer>
+    )
+  }
+
+  const UserForm = () => {
+
+    return (
+      <UserContainer>
         <Label>Cardholder Name</Label>
         <InputField 
           placeholder="e.g. John Doe" 
@@ -102,9 +110,37 @@ function App() {
             />
           </CVC>
         </FinalInputRow>
-        <ConfirmButton>Confirm</ConfirmButton>
-      </UserInputs>
-    </AppContainer>
+        <ConfirmButton onClick={() => setPage('confirmPage')}>Confirm</ConfirmButton>
+      </UserContainer>
+    )
+  }
+
+
+
+
+  return (
+    <Main>
+      <ColoredBackground />
+      <CardDiv>
+        <CardFront>
+          <WhiteCircle>
+            <WhiteCircle className="transparentcircle"></WhiteCircle>
+          </WhiteCircle>
+          <CardNumber>0000 0000 0000 0000</CardNumber>
+          <CardName>Card Holder
+            <span>00/00</span>
+          </CardName>
+        </CardFront>
+        <CardBack>
+          <CardSwipe />
+          <CvcSection>
+            <span>000</span>
+          </CvcSection>
+          <CardBackImg src={cardBackImg} alt="Back of card image writing" />
+        </CardBack>
+      </CardDiv>
+        {page === 'main' ? <UserForm /> : <Confirmation />}
+    </Main>
   );
 }
 
