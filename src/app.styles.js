@@ -67,7 +67,7 @@ export const WhiteCircle = styled.div`
 export const CardNumber = styled.span`
     letter-spacing: 5px;
     color: #FFFFFF;
-    font-size: 38px;
+    font-size: 36px;
     font-family: 'Arial', sans-serif;
     margin-top: 70px;
     align-text: center;
@@ -81,10 +81,10 @@ export const CardName = styled.div`
     font-size: 20px;
     font-family: 'Arial', sans-serif;
     color: #FFFFFF;
-    margin-left: 35px;
+    margin-left: 30px;
 
     span {
-        margin-left: 240px;
+        margin-left: 245px;
     }
 `;
 
@@ -129,3 +129,96 @@ export const CardBackImg = styled.img`
     display: block;
     margin: 40px auto;
 `;
+
+export const UserInputs = styled.div`
+    display: flex;
+    flex-direction: column;
+    height: 500px;
+    width: 50vh;
+    margin-top: 29vh;
+    margin-left: 40vh;
+`;
+
+export const Label = styled.span`
+    font-family: 'Arial', sans-serif;
+    color: #21092F;
+    font-size: 22px;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+`;
+
+export const InputField = styled.input`
+    border: 1px solid #DFDEE0;
+    border-radius: 8px;
+    height: 40px;
+    width: 50vh;
+    margin-bottom: 20px;
+    padding-left: 20px;
+    font-size: 20px;
+    font-family: 'Arial', sans-serif;
+    color: black;
+
+    &::placeholder {
+        font-size: 20px;
+        font-family: 'Arial', sans-serif;
+        color: #DFDEE0;
+    }
+
+    &.mm {
+        width: 6vh;
+        margin-right: 1vh;
+        letter-spacing: 10px;
+        font-size: 32px;
+    }
+
+    &.yy {
+        width: 6vh;
+        letter-spacing: 5px;
+        letter-spacing: 10px;
+        font-size: 32px;
+    }
+
+    &.cvc {
+        width: 30vh;
+    }
+`;
+
+export const FinalInputRow = styled.div`
+    display: flex;
+    flex-direction: row;
+`;
+
+export const ExpDate = styled.div`
+    display: flex;
+    flex-direction: column;
+    width: 20vh;
+`;
+
+export const DateInputs = styled.div`
+    display: flex;
+    flex-direction: row;
+`;
+
+export const CVC = styled.div`
+    display: flex;
+    flex-direction: column;
+    width: 30vh;
+`;
+
+export const ConfirmButton = styled.button`
+    background: #21092F;
+    border-radius: 8px;
+    width: 51vh;
+    height: 75px;
+    margin-top: auto;
+    font-family: 'Arial', sans-serif;
+    color: #FFFFFF;
+    font-size: 48px;
+
+    &:hover {
+        background: #9C51C7;
+        border: none;
+        box-shadow: 5px 10px 8px #888888;
+    }
+`;
+// reccomend blur box shadow?
