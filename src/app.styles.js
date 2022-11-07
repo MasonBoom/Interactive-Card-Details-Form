@@ -26,6 +26,10 @@ const gradientMovementCheckmark = keyframes`
 export const Main = styled.div`
     display: flex;
     flex-direction: row;
+
+    @media (max-width: 1000px) {
+        flex-direction: column;
+    }
 `;
 
 export const ColoredBackground = styled.div`
@@ -36,12 +40,27 @@ export const ColoredBackground = styled.div`
     margin-left: -10px;
     margin-bottom: -12px;
     background-size: cover;
+
+    @media (max-width: 1000px) {
+        height: 30vh;
+        width: 103%;
+    }
 `;
 
 export const CardDiv = styled.section`
     margin: auto -25vh;
     width: 600px;
     height: 700px;
+
+    @media (max-width: 1200px) {
+        width: 350px;
+    }
+
+    @media (max-width: 1000px) {
+        margin: auto;
+        margin-top: -100px;
+        width: 350px;
+    }
 `;
 
 export const CardFront = styled.div`
@@ -54,22 +73,48 @@ export const CardFront = styled.div`
     padding-top: 25px;
     display: flex;
     flex-direction: column;
+
+    @media (max-width: 1200px) {
+        width: 300px;
+        height: 150px;
+    }
+
+    @media (max-width: 1000px) {
+        position: absolute;
+    }
 `;
 
-export const WhiteCircle = styled.div`
-    background: white;
+export const CircleRow = styled.div`
+    display: flex;
+    flex-direction: row;
+`;
+
+export const WhiteCircle = styled.img`
     border-radius: 50%;
     width: 50px;
     height: 50px;
     margin-left: 25px;
 
-    &.transparentcircle {
-        background: transparent;
-        border: 1px solid white;
-        width: 25px;
-        height: 25px;
-        margin-left: 65px;
-        margin-top: 12px;
+    @media (max-width: 1200px) {
+        width: 30px;
+        height: 30px;
+    }
+`;
+
+export const TransparentCircle = styled.div`
+    background: transparent;
+    border: 1px solid white;
+    width: 25px;
+    height: 25px;
+    margin-left: 25px;
+    margin-top: 12px;
+    border-radius: 50%;
+
+    @media (max-width: 1200px) {
+        width: 15px;
+        height: 15px;
+        margin-top: 7px;
+        margin-left: 10px;
     }
 `;
 
@@ -82,6 +127,12 @@ export const CardNumber = styled.span`
     align-text: center;
     margin-left: auto;
     margin-right: auto;
+
+    @media (max-width: 1200px) {
+        font-size: 18px;
+        letter-spacing: 4px;
+        margin-top: 30px;
+    }
 `;
 
 export const CardName = styled.div`
@@ -97,6 +148,16 @@ export const CardName = styled.div`
         margin-left: auto;
         margin-right: 35px;
     }
+
+    @media (max-width: 1200px) {
+        font-size: 12px;
+        margin-top: 40px;
+        margin-left: 20px;
+
+        span {
+            margin-right: 20px;
+        }
+    }
 `;
 
 export const CardBack = styled.div`
@@ -107,6 +168,15 @@ export const CardBack = styled.div`
     border-radius: 10px;
     float: right;
 
+    @media (max-width: 1200px) {
+        width: 300px;
+        height: 175px;
+        margin-top: 50px;
+    }
+
+    @media (max-width: 1000px) {
+        margin-top: -100px;
+    }
 `;
 
 export const CardSwipe = styled.div`
@@ -114,6 +184,11 @@ export const CardSwipe = styled.div`
     margin-top: 30px;
     width: 100%;
     height: 50px;
+
+    @media (max-width: 1200px) {
+        height: 20px;
+        margin-top: 15px;
+    }
 `;
 
 export const CvcSection = styled.div`
@@ -123,7 +198,7 @@ export const CvcSection = styled.div`
     border-radius: 4px;
     margin: 25px auto;
 
-    span{
+    span {
         font-family: 'Arial', sans-serif;
         font-style: normal;
         font-size: 30px;
@@ -133,12 +208,26 @@ export const CvcSection = styled.div`
         float: right;
         margin-top: 8px;
     }
+
+    @media (max-width: 1200px) {
+        height: 20px;
+
+        span {
+            font-size: 15px;
+            margin-top: 1px;
+            margin-right: 5px;
+        }
+    }
 `;
 
 export const CardBackImg = styled.img`
     width: 50%;
     display: block;
     margin: 40px auto;
+
+    @media (max-width: 1200px) {
+        margin: 20px auto;
+    }
 `;
 
 export const UserContainer = styled.form`
@@ -148,6 +237,19 @@ export const UserContainer = styled.form`
     width: 50vh;
     margin-top: 29vh;
     margin-left: 40vh;
+
+    @media (max-width: 1200px) and (min-width: 1000px) {
+        margin-left: 30vh;
+        width: 40vh;
+        height: 350px;
+        margin-top: 22vh;
+    }
+
+    @media (max-width: 1000px) {
+        margin: auto auto;
+        margin-top: -400px;
+        width: 90%;
+    }
 `;
 
 export const Label = styled.span`
@@ -156,6 +258,11 @@ export const Label = styled.span`
     font-size: 22px;
     letter-spacing: 2px;
     margin-bottom: 10px;
+
+    @media (max-width: 1200px) and (min-width: 1000px) {
+        font-size: 14px;
+        margin-bottom: 5px;
+    }
 `;
 
 export const InputField = styled.input`
@@ -168,6 +275,7 @@ export const InputField = styled.input`
     font-size: 20px;
     font-family: 'Arial', sans-serif;
     color: black;
+    overflow: hidden;
 
     &::placeholder {
         font-size: 20px;
@@ -184,13 +292,35 @@ export const InputField = styled.input`
 
     &.yy {
         width: 6vh;
-        letter-spacing: 5px;
         letter-spacing: 10px;
         font-size: 32px;
     }
 
     &.cvc {
         width: 30vh;
+    }
+
+    @media (max-width: 1200px) and (min-width: 1000px) {
+        width: 30vh;
+        height: 25px;
+
+        &.mm, &.yy {
+            width: 5vh;
+            letter-spacing: 5px;
+            font-size: 22px;
+        }
+
+        &.cvc {
+            width: 10vh;
+        }
+    }
+
+    @media (max-width: 1000px) {
+        width: 100%;
+
+        &.cvc {
+            width: 100%;
+        }
     }
 `;
 
@@ -203,6 +333,10 @@ export const ExpDate = styled.div`
     display: flex;
     flex-direction: column;
     width: 20vh;
+
+    @media (max-width: 1200px) and (min-width: 1000px) {
+        width: 15vh;
+    }
 `;
 
 export const DateInputs = styled.div`
@@ -214,6 +348,17 @@ export const CVC = styled.div`
     display: flex;
     flex-direction: column;
     width: 30vh;
+
+    @media (max-width: 1200px) and (min-width: 1000px) {
+        width: 20vh;
+        float: right;
+        margin-left: auto;
+    }
+
+    @media (max-width: 1000px) {
+        width: 100%;
+        margin-left: 15px;
+    }
 `;
 
 export const ConfirmButton = styled.button`
@@ -235,11 +380,27 @@ export const ConfirmButton = styled.button`
     &.confirmPage {
         margin-top: 11vh;
     }
+
+    @media (max-width: 1200px) and (min-width: 1000px) {
+        width: 32vh;
+
+        &.confirmPage {
+            align-self: center;
+        }
+    }
+
+    @media (max-width: 1000px) {
+        width: 100%;
+    }
 `;
 
 export const MainConfirmation = styled.div`
     display: flex;
     flex-direction: column;
+    
+    @media (max-width: 1200px) and (min-width: 1000px) {
+        margin-left: -80px;
+    }
 `;
 
 export const CheckmarkContainer = styled.div`

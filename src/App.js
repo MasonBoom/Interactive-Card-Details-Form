@@ -8,7 +8,9 @@ import {
   CardSwipe,
   CvcSection,
   CardBackImg,
+  CircleRow,
   WhiteCircle,
+  TransparentCircle,
   CardNumber,
   CardName,
   UserContainer,
@@ -27,6 +29,7 @@ import {
 } from './app.styles';
 import cardBackImg from './assets/cardBack.svg';
 import checkmark from './assets/checkmark.svg';
+import whiteCircle from './assets/whiteCircle.svg';
 
 function App() {
   const [page, setPage] = useState('main')
@@ -40,9 +43,13 @@ function App() {
     setName(e.target.value)
   }
 
+  // formats credit card number
+
   const cardNumberFormat = (number) => {
     return number.replace(/(\d{4})/g, '$1 ').trim()
   }
+
+  // checks if form is complete before going to the confirmation page
 
   const validateAndSubmit = () => {
     if (name === '' || cardNumber.length < 16 || expMonth.length < 2 || expYear.length < 2 || cvc.length < 3) {
@@ -51,6 +58,8 @@ function App() {
       setPage('confirmPage')
     }
   }
+
+  // all fields are reset when the 'confirm' button is pressed after submitting form
 
   const resetAllFields = () => {
     setName('')
@@ -87,9 +96,10 @@ function App() {
       <ColoredBackground />
       <CardDiv>
         <CardFront>
-          <WhiteCircle>
-            <WhiteCircle className="transparentcircle"></WhiteCircle>
-          </WhiteCircle>
+          <CircleRow>
+            <WhiteCircle src={whiteCircle} alt='White Circle' />
+            <TransparentCircle />
+          </CircleRow>
           <CardNumber>{cardNumber.length < 16 ? '0000 0000 0000 0000' : cardNumberFormat(cardNumber)}</CardNumber>
           <CardName>{name === '' ? 'Card Holder' : name}
             <span>{expMonth === '' ? '00' : expMonth}/{expYear.length < 2 ? '00' : expYear}</span>
